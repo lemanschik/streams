@@ -6,6 +6,10 @@
  */
 
 const { createObjectURL } = window.document;
+
+// Creating a pipeThrough API;
+const fnPipeThrough = () => ({ pipeThrough() {}});
+
 // trys something and do the next thing. or handle the .error returns { next, error }
 const TryNext = (errorHandler = (err) => err) => { // ()=>{} error removes the error property from Next
     const Next = { next: (fn=()=>{}) => { try { Object.assign(Next,{ value: fn() }) } catch (e) { Object.assign(Next, { error: errorHandler(e) }) }; return Next; } };
